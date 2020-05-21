@@ -22,6 +22,8 @@ executable.
 >cmake --build VS2019
 >VS2019\bin\test.exe
 ```
+
+### Result
 -> Works!
 
 ## Test Case Ubuntu 20.04 and Gcc 9
@@ -38,6 +40,8 @@ $cmake -H. -BLinuxGcc9 -G"Unix Makefiles"
 $cmake --build LinuxGcc9
 $LinuxGcc9\bin\test.exe
 ```
+
+### Result
 -> Fails in conan step!
 
 Some of the errors:
