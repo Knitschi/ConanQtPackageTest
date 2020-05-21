@@ -44,7 +44,6 @@ Some of the errors:
 
 After Qt configure
 ```
-<qt configure>
 ...
 t Sql Drivers:
   DB2 (IBM) .............................. no
