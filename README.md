@@ -86,4 +86,15 @@ Linker errors like this
  => source failed verification.
 ```
 
+### Remarks
+
+The package builds when using the following options in the conanfile.
+
+```
+qt:with_mysql=False
+qt:with_harfbuzz=False
+qt:openssl=False
+```
+
+
 
