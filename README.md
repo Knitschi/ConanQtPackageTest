@@ -22,4 +22,4 @@ executable.
 >cmake --build VS2019
 >VS2019\bin\test.exe
 ```
-
+-> Works!
