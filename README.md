@@ -9,7 +9,7 @@ before building this you need to manually download and install Conan, CMake and 
 All test cases contain commands for getting the qt package. Building the test project and running the built
 executable.
 
-## Test Case Visual Studio 2019
+## Test Case Windows and Visual Studio 2019
 
 * Visual Studio 16.6.0
 * Conan 1.25.2
