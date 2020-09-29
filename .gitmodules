@@ -4,3 +4,6 @@
 [submodule "Sources/CIBuildConfigurations"]
 	path = Sources/CIBuildConfigurations
 	url = https://github.com/Knitschi/CIBuildConfigurations.git
+[submodule "Sources/CPFBuildscripts"]
+	path = Sources/CPFBuildscripts
+	url = https://github.com/Knitschi/CPFBuildscripts.git
