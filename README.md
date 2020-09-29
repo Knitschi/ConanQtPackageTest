@@ -17,7 +17,7 @@ executable.
 * CMake 3.16.5
 
 ```
->conan install -pr VS2019-profile -if VS2019 . --build=missing
+>conan install -pr VS2019-profile -if VS2019 . --build=missing conanfile_1.txt
 >cmake -H. -BVS2019 -G"Visual Studio 16 2019"
 >cmake --build VS2019
 >VS2019\bin\test.exe

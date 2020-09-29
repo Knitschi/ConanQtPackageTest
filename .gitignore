@@ -1,1 +1,6 @@
-/VS2019
+/Generated
+/Configuration
+1_Configure.py
+2_GetDependencies.py
+3_Generate.py
+4_Make.py
