@@ -1,9 +1,6 @@
 [submodule "Sources/CPFCMake"]
 	path = Sources/CPFCMake
 	url = https://github.com/Knitschi/CPFCMake.git
-[submodule "Sources/CPFBuildscripts"]
-	path = Sources/CPFBuildscripts
-	url = https://github.com/Knitschi/CPFBuildscripts.git
 [submodule "Sources/CIBuildConfigurations"]
 	path = Sources/CIBuildConfigurations
 	url = https://github.com/Knitschi/CIBuildConfigurations.git
