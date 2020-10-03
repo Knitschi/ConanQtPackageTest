@@ -3,6 +3,4 @@ cmake_minimum_required(VERSION ${CPF_MINIMUM_CMAKE_VERSION})
 
 project(ConanQtPackageTest)
 
-enable_testing()
-
 cpfAddPackages(GLOBAL_FILES "../README.md" "../LICENSE" )
