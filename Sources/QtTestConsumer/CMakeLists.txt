@@ -31,8 +31,11 @@ cpfAddFilePackage(
 )
 
 set(runTestTargets)
-foreach(conanfile qtVersion IN ZIP_LISTS conanfiles qtVersions)
+set(index 0)
+foreach(conanfile ${conanfiles})
  
+    list(GET qtVersions ${index} qtVersion)
+
     set(absConanFile "${CMAKE_CURRENT_SOURCE_DIR}/${conanfile}")
     set(stampFile ${CMAKE_CURRENT_BINARY_DIR}/run_qt${qtVersion}Test.stamp)
 
@@ -61,6 +64,8 @@ foreach(conanfile qtVersion IN ZIP_LISTS conanfiles qtVersions)
     )
     set_property(TARGET ${targetName} PROPERTY FOLDER ${PROJECT_NAME})
     cpfListAppend(runTestTargets ${targetName})
+
+    cpfIncrement(index)
     
 endforeach()
 
