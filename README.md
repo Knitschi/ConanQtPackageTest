@@ -14,8 +14,8 @@ executable.
 
 | Conanfile | VS2019-shared-debug | VS2019-static-release | Clang-shared-debug | Clang-static-release | Gcc-shared-debug |
 | :--- |:---:| :---:|:---:|:---:|:---:|
-| conanfile_Qt5.12.6.txt | X | X |  |  |  |
-| conanfile_Qt5.12.7.txt | - | X |  |  |  |
+| conanfile_Qt5.12.6.txt | X | X |  |  | - |
+| conanfile_Qt5.12.7.txt | - | X |  |  | 1 |
 | conanfile_Qt5.12.8.txt | X | - |  |  |  |
 | conanfile_Qt5.12.9.txt | - | - |  |  |  |
 | conanfile_Qt5.13.0.txt | X | X |  |  |  |
@@ -62,4 +62,13 @@ python 3_Generate.py
 python 4_Make.py --target runAllTests_QtTestConsumer
 ```
 
+# Encountered Build Errors
 
+### 1 Somewhere in platform plugins
+
+Not sure what really caused the first error. Error occured sometime when compiling platform plugins.
+
+```
+make[10]: *** [Makefile.xcb_qpa_lib:5240: .obj/qxcbkeyboard.o] Error 1
+
+```
