@@ -27,7 +27,7 @@ executable.
 | conanfile_Qt5.15.1.txt | - | - | X |  | 5 |
 
 ### Legend
-**-**: Qt Package has build errors.  
+**<number>**: Qt Package could not be build. A short description of the error can be found in the *Encountered Build Errors* section below.  
 **X**: Qt Package can be build.  
 
 # Conan Versions
