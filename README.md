@@ -7,7 +7,7 @@ before building this you need to manually download and install Conan, CMake and 
 # Tests
 
 All test cases contain commands for getting the qt package. Building the test project and running the built
-executable.
+executable. The conanfiles can be found under Sources/QtTestConsumer.
 
 
 # Working Qt package configurations
