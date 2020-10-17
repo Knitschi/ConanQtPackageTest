@@ -67,6 +67,8 @@ foreach(conanfile ${conanfiles})
     cpfListAppend(runTestTargets ${targetName})
 
     cpfIncrement(index)
+
+    message(STATUS "Add package test target ${targetName}.")
     
 endforeach()
 
