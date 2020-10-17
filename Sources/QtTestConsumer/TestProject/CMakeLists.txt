@@ -6,28 +6,38 @@ project(ConanQtPackageTest)
 
 include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
 
+function( get_dll_location dllPathOut target)
+    string(TOUPPER "${COMPILER_CONFIG}" upperConfig)
+    get_property(absDllPath TARGET ${target} PROPERTY IMPORTED_LOCATION_${upperConfig})
+    if(NOT absDllPath)
+        get_property(absDllPath TARGET ${target} PROPERTY LOCATION_${upperConfig})
+    endif()
+    set(${dllPathOut} ${absDllPath} PARENT_SCOPE)
+endfunction()
+
 conan_basic_setup(TARGETS)
 #conan_basic_setup()
+message(STATUS "Looking for Qt cmake files at ${CONAN_LIB_DIRS_QT}/cmake/Qt5")
 find_package(Qt5 CONFIG REQUIRED COMPONENTS Core Gui Widgets PATHS ${CONAN_LIB_DIRS_QT}/cmake/Qt5 )
+message(STATUS "Using qt at ${Qt5_DIR}")
 
-string(TOUPPER "${COMPILER_CONFIG}" COMPILER_CONFIG)
 
 foreach(qtTarget Qt5::Core Qt5::Gui Qt5::Widgets)
-    
-    get_property(absDllPath TARGET ${qtTarget} PROPERTY IMPORTED_LOCATION_${upperConfig})
+
+    get_dll_location(absDllPath ${qtTarget})
     file(COPY ${absDllPath} DESTINATION ${CMAKE_BINARY_DIR}/bin)
 
 endforeach()
 
 if(${CMAKE_SYSTEM_NAME} STREQUAL Windows)
 
-    get_property(absDllPath TARGET Qt5::QWindowsIntegrationPlugin PROPERTY IMPORTED_LOCATION_${upperConfig})
+    get_dll_location(absDllPath Qt5::QWindowsIntegrationPlugin)
     file(MAKE_DIRECTORY ${CMAKE_BINARY_DIR}/bin/platforms)
     file(COPY ${absDllPath} DESTINATION ${CMAKE_BINARY_DIR}/bin/platforms)
 
 elseif(${CMAKE_SYSTEM_NAME} STREQUAL Linux)
 
-    get_property(absDllPath TARGET Qt5::QXcbIntegrationPlugin PROPERTY IMPORTED_LOCATION_${upperConfig})
+    get_dll_location(absDllPath Qt5::QXcbIntegrationPlugin)
     file(MAKE_DIRECTORY ${CMAKE_BINARY_DIR}/bin/platforms)
     file(COPY ${absDllPath} DESTINATION ${CMAKE_BINARY_DIR}/bin/platforms)
 
