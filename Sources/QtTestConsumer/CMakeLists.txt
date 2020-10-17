@@ -24,6 +24,7 @@ endforeach()
 set( sources
     TestProject/CMakeLists.txt
     TestProject/test.cpp
+
 )
 
 cpfAddFilePackage(
@@ -42,7 +43,7 @@ foreach(conanfile ${conanfiles})
     set(testProjectBuildDir "${CMAKE_CURRENT_BINARY_DIR}/TestProject/run_qt${qtVersion}Test")
 
     add_custom_command(
-        DEPENDS ${sources}  
+        DEPENDS ${sources} ${conanfile}
         # Build the conan qt package 
         COMMAND conan install -pr Sources/CIBuildConfigurations/ConanProfile-${CPF_CONFIG} -if ${testProjectBuildDir} ${absConanFile} --build=missing 
         # Run CMake Generate for the consumer package
