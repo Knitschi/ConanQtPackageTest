@@ -12,8 +12,8 @@ executable.
 
 # Working Qt package configurations
 
-| Conanfile   | VS2019-shared-debug | VS2019-static-release | Clang-shared-debug | Clang-static-release | Gcc-shared-debug |
-| :--- |:---:| :---:|
+| Conanfile | VS2019-shared-debug | VS2019-static-release | Clang-shared-debug | Clang-static-release | Gcc-shared-debug |
+| :--- |:---:| :---:|:---:|:---:|:---:|
 | conanfile_Qt5.12.6.txt | X | X |  |  |  |
 | conanfile_Qt5.12.7.txt | - | X |  |  |  |
 | conanfile_Qt5.12.8.txt | X | - |  |  |  |
