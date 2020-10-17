@@ -23,7 +23,7 @@ executable.
 | conanfile_Qt5.13.2.txt | X | X | 2 |  |  |
 | conanfile_Qt5.14.0.txt | X | X |  |  |  |
 | conanfile_Qt5.14.1.txt | X | X | 2 |  | X |
-| conanfile_Qt5.15.0.txt | - | - | X | X | X |
+| conanfile_Qt5.15.0.txt | 6 | 6 | X | X | X |
 | conanfile_Qt5.15.1.txt | - | - | X |  | 5 |
 
 ### Legend
@@ -111,4 +111,12 @@ make[9]: Leaving directory '/home/knitschi/.conan/data/qt/5.15.1/bincrafters/sta
 make[8]: *** [Makefile:48: sub-xkbcommon-make_first-ordered] Error 2
 make[8]: Leaving directory '/home/knitschi/.conan/data/qt/5.15.1/bincrafters/stable/build/0cf2aaff5c853a207513d9a75f673c2b67fca823/qtbase/src/platformsupport/input'
 make[7]: *** [Makefile:209: sub-input-make_first] Error 2
+```
+
+### 6 '_CppInfo' object does not support item assignment
+
+```
+CUSTOMBUILD : error : opengl/system: Error in package_info() method, line 67 [C:\dev\ConanQtPackageTest\Generated\VS2019-shared-debug\QtTestConsumer\runTest_Qt5.15.0TestConsumer.vcxproj]
+        self.cpp_info.filenames["cmake_find_package"] = "opengl_system"
+        TypeError: '_CppInfo' object does not support item assignment
 ```
