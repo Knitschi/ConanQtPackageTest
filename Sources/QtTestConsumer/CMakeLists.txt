@@ -31,6 +31,8 @@ cpfAddFilePackage(
 	SOURCES ${sources} ${conanfiles}
 )
 
+cpfGetConfigurations(configs)
+
 set(runTestTargets)
 set(index 0)
 foreach(conanfile ${conanfiles})
@@ -42,18 +44,26 @@ foreach(conanfile ${conanfiles})
 
     set(testProjectBuildDir "${CMAKE_CURRENT_BINARY_DIR}/TestProject/run_qt${qtVersion}Test")
 
+    set(testExePath)
+    if(${CMAKE_SYSTEM_NAME} STREQUAL Windows)
+        set(testExePath ${testProjectBuildDir}/bin/test.exe)
+    elseif(${CMAKE_SYSTEM_NAME} STREQUAL Linux)
+        set(testExePath ${testProjectBuildDir}/bin/test)
+    endif()
+
     add_custom_command(
         DEPENDS ${sources} ${conanfile}
         # Build the conan qt package 
         COMMAND conan install -pr Sources/CIBuildConfigurations/ConanProfile-${CPF_CONFIG} -if ${testProjectBuildDir} ${absConanFile} --build=missing 
         # Run CMake Generate for the consumer package
-        COMMAND "${CMAKE_COMMAND}" -S "${CMAKE_CURRENT_SOURCE_DIR}/TestProject" -B ${testProjectBuildDir} -DCMAKE_TOOLCHAIN_FILE=${CMAKE_TOOLCHAIN_FILE} -DCOMPILER_CONFIG=${CMAKE_CONFIGURATION_TYPES} -G "${CMAKE_GENERATOR}"
+        COMMAND "${CMAKE_COMMAND}" -S "${CMAKE_CURRENT_SOURCE_DIR}/TestProject" -B ${testProjectBuildDir} -DCMAKE_TOOLCHAIN_FILE=${CMAKE_TOOLCHAIN_FILE} -DCOMPILER_CONFIG=${configs} -G "${CMAKE_GENERATOR}"
         # Build the consumer package.
         COMMAND "${CMAKE_COMMAND}" --build ${testProjectBuildDir}
         # Run the consumer package executable.
-        COMMAND ${testProjectBuildDir}/bin/test.exe 
+        COMMAND ${testExePath}
         # Create a stamp file.
         COMMAND "${CMAKE_COMMAND}" -E touch ${stampFile}
+        COMMENT "CMake Generate Comman: \"${CMAKE_COMMAND}\" -S \"${CMAKE_CURRENT_SOURCE_DIR}/TestProject\" -B ${testProjectBuildDir} -DCMAKE_TOOLCHAIN_FILE=${CMAKE_TOOLCHAIN_FILE} -DCOMPILER_CONFIG=${configs} -G \"${CMAKE_GENERATOR}\""
         OUTPUT ${stampFile}
         WORKING_DIRECTORY ${CPF_ROOT_DIR}
     )
