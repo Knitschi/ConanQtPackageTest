@@ -22,8 +22,10 @@ jobs:
           CONAN_SYSREQUIRES_SUDO: 0
         run: |
           pwd
-          ls
-          python3 Sources/CPFBuildScripts/0_CopyScripts.py
+          ls -al
+          ls -al Sources
+          ls -al Sources/CPFBuildScripts
+          ls -al Sources/CPFBuildScripts/0_CopyScripts.py
           python3 1_Configure.py ${{ matrix.config }}
           python3 3_Generate.py
           python3 4_Make.py --target runAllTests_QtTestConsumer
