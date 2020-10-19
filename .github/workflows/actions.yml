@@ -6,15 +6,26 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        config: ["Gcc-shared-debug", "Clang-shared-debug", "Clang-static-release"]
+        config: [Gcc-shared-debug, Clang-shared-debug, Clang-static-release]
     steps:
       - name: Install setuptools
         run: sudo apt-get install python3-setuptools
       - name: install
         run: pip3 install conan --ignore-installed 
       - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
         with:
-          submodules: recursive
+          repository: Knitschi/CPFCMake
+          path: Sources/CPFCMake
+      - uses: actions/checkout@v2
+        with:
+          repository: Knitschi/CIBuildConfigurations
+          path: Sources/CIBuildConfigurations
+      - uses: actions/checkout@v2
+        with:
+          repository: Knitschi/CPFBuildscripts
+          path: Sources/CPFBuildscripts
+        
       - name: run
         env:
           CONAN_SYSREQUIRES_MODE: enabled
@@ -31,7 +42,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        config: ["VS2019-shared-debug", "VS2019-static-release"]
+        config: [VS2019-shared-debug, VS2019-static-release]
     steps:
       - uses: actions/checkout@v2
         with:
