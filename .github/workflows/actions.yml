@@ -8,6 +8,8 @@ jobs:
       matrix:
         config: ["Gcc-shared-debug", "Clang-shared-debug", "Clang-static-release"]
     steps:
+      - name: Install setuptools
+        run: sudo apt-get install python3-setuptools
       - name: install
         run: pip3 install conan --ignore-installed 
       - uses: actions/checkout@v1
