@@ -8,9 +8,9 @@ jobs:
       matrix:
         config: [Gcc-shared-debug, Clang-shared-debug, Clang-static-release]
     steps:
-      - name: Install setuptools
-        run: sudo apt-get install python3-setuptools graphviz
-      - name: install
+      - name: Install system packages
+        run: sudo apt-get install python3-setuptools graphviz clang-format-10 clang-10
+      - name: install conan
         run: pip3 install conan --ignore-installed 
       - uses: actions/checkout@v2
         with:
