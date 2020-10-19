@@ -21,6 +21,8 @@ jobs:
           CONAN_SYSREQUIRES_MODE: enabled
           CONAN_SYSREQUIRES_SUDO: 0
         run: |
+          pwd
+          ls
           python3 Sources/CPFBuildScripts/0_CopyScripts.py
           python3 1_Configure.py ${{ matrix.config }}
           python3 3_Generate.py
