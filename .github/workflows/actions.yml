@@ -8,11 +8,11 @@ jobs:
       matrix:
         config: ["Gcc-shared-debug", "Clang-shared-debug", "Clang-static-release"]
     steps:
-      - name: Install Python
-        run: apt-get update && apt-get -qq install -y --no-install-recommends python3-pip python3-setuptools g++ pkg-config cmake
       - name: install
         run: pip3 install conan --ignore-installed 
       - uses: actions/checkout@v1
+        with:
+          submodules: "recursive"
       - name: run
         shell: bash
         env:
@@ -32,6 +32,8 @@ jobs:
         config: ["VS2019-shared-debug", "VS2019-static-release"]
     steps:
       - uses: actions/checkout@v1
+        with:
+          submodules: "recursive"
       - name: run
         run: |
           python Sources/CPFBuildScripts/0_CopyScripts.py
