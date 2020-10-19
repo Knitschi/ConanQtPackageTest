@@ -9,7 +9,7 @@ jobs:
         config: [Gcc-shared-debug, Clang-shared-debug, Clang-static-release]
     steps:
       - name: Install system packages
-        run: sudo apt-get install python3-setuptools graphviz clang-format-10 clang-10
+        run: sudo apt-get install python3-setuptools graphviz clang-format-10 clang-10 clang-tidy-10 ninja
       - name: install conan
         run: pip3 install conan --ignore-installed 
       - uses: actions/checkout@v2
