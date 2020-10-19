@@ -1,0 +1,40 @@
+on: [push, pull_request]
+
+jobs:
+  linux:
+    runs-on:  ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        config: ["Gcc-shared-debug", "Clang-shared-debug", "Clang-static-release"]
+    steps:
+      - name: Install Python
+        run: apt-get update && apt-get -qq install -y --no-install-recommends python3-pip python3-setuptools g++ pkg-config cmake
+      - name: install
+        run: pip3 install conan --ignore-installed 
+      - uses: actions/checkout@v1
+      - name: run
+        shell: bash
+        env:
+          CONAN_SYSREQUIRES_MODE: enabled
+          CONAN_SYSREQUIRES_SUDO: 0
+        run: |
+          python3 Sources/CPFBuildScripts/0_CopyScripts.py
+          python3 1_Configure.py ${{ matrix.config }}
+          python3 3_Generate.py
+          python3 4_Make.py --target runAllTests_QtTestConsumer
+
+  Windows:
+    runs-on:  windows-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        config: ["VS2019-shared-debug", "VS2019-static-release"]
+    steps:
+      - uses: actions/checkout@v1
+      - name: run
+        run: |
+          python Sources/CPFBuildScripts/0_CopyScripts.py
+          python 1_Configure.py ${{ matrix.config }}
+          python 3_Generate.py
+          python 4_Make.py --target runAllTests_QtTestConsumer
