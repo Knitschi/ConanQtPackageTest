@@ -14,7 +14,7 @@ jobs:
         run: pip3 install conan --ignore-installed 
       - uses: actions/checkout@v2
         with:
-          submodules: "recursive"
+          submodules: True
       - name: run
         shell: bash
         env:
