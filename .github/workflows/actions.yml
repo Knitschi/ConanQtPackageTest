@@ -9,29 +9,17 @@ jobs:
         config: [Gcc-shared-debug, Clang-shared-debug, Clang-static-release]
     steps:
       - name: Install setuptools
-        run: sudo apt-get install python3-setuptools
+        run: sudo apt-get install python3-setuptools graphviz
       - name: install
         run: pip3 install conan --ignore-installed 
       - uses: actions/checkout@v2
-      - uses: actions/checkout@v2
         with:
-          repository: Knitschi/CPFCMake
-          path: Sources/CPFCMake
-      - uses: actions/checkout@v2
-        with:
-          repository: Knitschi/CIBuildConfigurations
-          path: Sources/CIBuildConfigurations
-      - uses: actions/checkout@v2
-        with:
-          repository: Knitschi/CPFBuildscripts
-          path: Sources/CPFBuildscripts
-        
+          submodules: recursive        
       - name: run
         env:
           CONAN_SYSREQUIRES_MODE: enabled
           CONAN_SYSREQUIRES_SUDO: 0
         run: |
-          pushd Sources && ls -al && popd
           python3 Sources/CPFBuildscripts/0_CopyScripts.py
           python3 1_Configure.py ${{ matrix.config }}
           python3 3_Generate.py
