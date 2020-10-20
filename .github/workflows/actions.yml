@@ -6,8 +6,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        config: [Gcc-shared-debug, Clang-shared-debug, Clang-static-release]
-        qtVersion: [5.12.6, 5.12.7, 5.12.8, 5.12.9, 5.13.0, 5.13.1, 5.13.2, 5.14.0, 5.14.1, 5.14.2, 5.15.0, 5.15.1,]
+        config: [Gcc-shared-debug]
+        qtVersion: [5.12.6]
     steps:
       - name: Install system packages
         run: sudo apt-get install python3-setuptools clang-format-10 clang-10 clang-tidy-10 ninja-build
@@ -19,15 +19,15 @@ jobs:
           CONAN_SYSREQUIRES_MODE: enabled
           CONAN_SYSREQUIRES_SUDO: 0
         run: |
-          conan install -pr "Sources/ConanProfiles/ConanProfile-${{ matrix.config }}" -if "build" "Sources/Conanfiles/conanfile_Qt${{ matrix.qtVersion }}.txt" --build=missing
+          python3 -m conan install -pr "Sources/ConanProfiles/ConanProfile-${{ matrix.config }}" -if "build" "Sources/Conanfiles/conanfile_Qt${{ matrix.qtVersion }}.txt" --build=missing
 
   Windows:
     runs-on:  windows-latest
     strategy:
       fail-fast: false
       matrix:
-        config: [VS2019-shared-debug, VS2019-static-release]
-        qtVersion: [5.12.6, 5.12.7, 5.12.8, 5.12.9, 5.13.0, 5.13.1, 5.13.2, 5.14.0, 5.14.1, 5.14.2, 5.15.0, 5.15.1,]
+        config: [VS2019-shared-debug]
+        qtVersion: [5.12.6]
     steps:
       - uses: actions/checkout@v2
       - name: run
