@@ -12,4 +12,6 @@ int main(int argc, char** argv)
     app.processEvents();
 
     std::cout << "The Qt TestConsumer worked!\n";
+
+    return 0;
 }
