@@ -7,23 +7,19 @@ jobs:
       fail-fast: false
       matrix:
         config: [Gcc-shared-debug, Clang-shared-debug, Clang-static-release]
+        qtVersion: [5.12.6, 5.12.7, 5.12.8, 5.12.9, 5.13.0, 5.13.1, 5.13.2, 5.14.0, 5.14.1, 5.14.2, 5.15.0, 5.15.1,]
     steps:
       - name: Install system packages
-        run: sudo apt-get install python3-setuptools graphviz clang-format-10 clang-10 clang-tidy-10 ninja-build
+        run: sudo apt-get install python3-setuptools clang-format-10 clang-10 clang-tidy-10 ninja-build
       - name: install conan
         run: pip3 install conan --ignore-installed 
       - uses: actions/checkout@v2
-        with:
-          submodules: recursive        
       - name: run
         env:
           CONAN_SYSREQUIRES_MODE: enabled
           CONAN_SYSREQUIRES_SUDO: 0
         run: |
-          python3 Sources/CPFBuildscripts/0_CopyScripts.py
-          python3 1_Configure.py ${{ matrix.config }}
-          python3 3_Generate.py
-          python3 4_Make.py --target runAllTests_QtTestConsumer
+          conan install -pr "Sources/ConanProfiles/ConanProfile-${{ matrix.config }}" -if "build" "Sources/Conanfiles/conanfile_Qt${{ matrix.qtVersion }}.txt" --build=missing
 
   Windows:
     runs-on:  windows-latest
@@ -31,13 +27,9 @@ jobs:
       fail-fast: false
       matrix:
         config: [VS2019-shared-debug, VS2019-static-release]
+        qtVersion: [5.12.6, 5.12.7, 5.12.8, 5.12.9, 5.13.0, 5.13.1, 5.13.2, 5.14.0, 5.14.1, 5.14.2, 5.15.0, 5.15.1,]
     steps:
       - uses: actions/checkout@v2
-        with:
-          submodules: recursive
       - name: run
         run: |
-          python Sources/CPFBuildScripts/0_CopyScripts.py
-          python 1_Configure.py ${{ matrix.config }}
-          python 3_Generate.py
-          python 4_Make.py --target runAllTests_QtTestConsumer
+          conan install -pr "Sources/ConanProfiles/ConanProfile-${{ matrix.config }}" -if "build" "Sources/Conanfiles/conanfile_Qt${{ matrix.qtVersion }}.txt" --build=missing
