@@ -43,7 +43,31 @@ elseif(${CMAKE_SYSTEM_NAME} STREQUAL Linux)
 
 endif()
 
+set( sourceFiles
+    test.cpp
+    CMakeToolchainFiles/Clang.cmake
+    CMakeToolchainFiles/Gcc.cmake
+    CMakeToolchainFiles/MSVC2019.cmake
+    Conanfiles/conanfile_Qt5.12.6.txt
+    Conanfiles/conanfile_Qt5.12.7.txt
+    Conanfiles/conanfile_Qt5.12.8.txt
+    Conanfiles/conanfile_Qt5.12.9.txt
+    Conanfiles/conanfile_Qt5.13.0.txt
+    Conanfiles/conanfile_Qt5.13.1.txt
+    Conanfiles/conanfile_Qt5.13.2.txt
+    Conanfiles/conanfile_Qt5.14.0.txt
+    Conanfiles/conanfile_Qt5.14.1.txt
+    Conanfiles/conanfile_Qt5.14.2.txt
+    Conanfiles/conanfile_Qt5.15.0.txt
+    Conanfiles/conanfile_Qt5.15.1.txt
+    ConanProfiles/ConanProfile-Clang-shared-debug
+    ConanProfiles/ConanProfile-Clang-static-release
+    ConanProfiles/ConanProfile-Gcc-shared-debug
+    ConanProfiles/ConanProfile-VS2019-shared-debug
+    ConanProfiles/ConanProfile-VS2019-static-release
+)
+
 # Add the test executable
-add_executable(test test.cpp "${CMAKE_BINARY_DIR}/conanbuildinfo.cmake" "${CMAKE_BINARY_DIR}/conanbuildinfo.txt" "${CMAKE_BINARY_DIR}/conaninfo.txt" )
+add_executable(test ${sourceFiles})
 #target_link_libraries(test CONAN_PKG::qt)
 target_link_libraries(test Qt5::Widgets)
