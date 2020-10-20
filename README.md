@@ -37,32 +37,20 @@ executable. The conanfiles can be found under Sources/QtTestConsumer.
   * Windows: 1.30.2
   * Ubuntu: 1.29.2
 
-# How to run the tests?
+# How to build and run the test project?
 
-This project relies on the CMakeProjectFramework to provide some helper build-scripts.  
-For further information see [Working with a CPF project](https://knitschi.github.io/CMakeProjectFramework/LastBuild/doc/sphinx/html/documentation/WorkingWithACPFProject.html)
+Before building the project you will have to install the conan package manager.
 
-## Linux
+Then you can run the following commands:
 
-```bash
+```
 git clone --recursive https://github.com/Knitschi/ConanQtPackageTest.git
 cd ConanQtPackageTest
-python3 Sources/CPFBuildScripts/0_CopyScripts.py
-python3 1_Configure.py Gcc-shared-debug
-python3 3_Generate.py
-python3 4_Make.py --target runAllTests_QtTestConsumer
+conan install -pr "Sources/ConanProfiles/ConanProfile-VS2019-shared-debug" -if "build" "Sources/Conanfiles/conanfile_Qt5.12.6.txt" --build=missing
 ```
+Currently this only builds the qt package without testing its consumption.
 
-## Windows
-
-```batch
-git clone --recursive https://github.com/Knitschi/ConanQtPackageTest.git
-cd ConanQtPackageTest
-python Sources/CPFBuildScripts/0_CopyScripts.py
-python 1_Configure.py VS2019-shared-debug
-python 3_Generate.py
-python 4_Make.py --target runAllTests_QtTestConsumer
-```
+TODO: implement conan build-interface to build and run the test consumer project.
 
 # Encountered Build Errors
 
