@@ -17,7 +17,6 @@ jobs:
       - name: run
         env:
           CONAN_SYSREQUIRES_MODE: enabled
-          CONAN_SYSREQUIRES_SUDO: 0
         run: |
           ~/.local/bin/conan remote add bincrafters https://api.bintray.com/conan/bincrafters/public-conan 
           ~/.local/bin/conan install -pr "Sources/ConanProfiles/ConanProfile-${{ matrix.config }}" -if "build" "Sources/Conanfiles/conanfile_Qt${{ matrix.qtVersion }}.txt" --build=missing
