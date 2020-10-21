@@ -2,7 +2,7 @@ on: [push, pull_request]
 
 jobs:
   linux:
-    runs-on:  ubuntu-latest
+    runs-on:  ubuntu-20.04
     strategy:
       fail-fast: false
       matrix:
@@ -19,7 +19,8 @@ jobs:
           CONAN_SYSREQUIRES_MODE: enabled
           CONAN_SYSREQUIRES_SUDO: 0
         run: |
-          python3 -m conan install -pr "Sources/ConanProfiles/ConanProfile-${{ matrix.config }}" -if "build" "Sources/Conanfiles/conanfile_Qt${{ matrix.qtVersion }}.txt" --build=missing
+          ~/.local/bin/conan remote add bincrafters https://api.bintray.com/conan/bincrafters/public-conan 
+          ~/.local/bin/conan install -pr "Sources/ConanProfiles/ConanProfile-${{ matrix.config }}" -if "build" "Sources/Conanfiles/conanfile_Qt${{ matrix.qtVersion }}.txt" --build=missing
 
   Windows:
     runs-on:  windows-latest
@@ -29,7 +30,10 @@ jobs:
         config: [VS2019-shared-debug]
         qtVersion: [5.12.6]
     steps:
+      - name: install
+        run: pip3 install conan
       - uses: actions/checkout@v2
       - name: run
         run: |
+          conan remote add bincrafters https://api.bintray.com/conan/bincrafters/public-conan 
           conan install -pr "Sources/ConanProfiles/ConanProfile-${{ matrix.config }}" -if "build" "Sources/Conanfiles/conanfile_Qt${{ matrix.qtVersion }}.txt" --build=missing
