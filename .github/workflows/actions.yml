@@ -6,8 +6,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        config: [Gcc-shared-debug]
-        qtVersion: [5.12.6]
+        config: [Gcc-shared-debug, Clang-shared-debug, Clang-static-release]
+        qtVersion: [5.12.6, 5.12.9, 5.13.2, 5.14.2, 5.15.1]
     steps:
       - name: Install system packages
         run: sudo apt-get install python3-setuptools clang-format-10 clang-10 clang-tidy-10 ninja-build
@@ -26,8 +26,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        config: [VS2019-shared-debug]
-        qtVersion: [5.12.6]
+        config: [VS2019-shared-debug, VS2019-static-release]
+        qtVersion: [5.12.6, 5.12.9, 5.13.2, 5.14.2, 5.15.1]
     steps:
       - name: install
         run: pip3 install conan
