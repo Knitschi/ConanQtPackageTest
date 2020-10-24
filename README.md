@@ -14,7 +14,7 @@ executable. The conanfiles can be found under Sources/Conanfiles.
 
 | Qt Version | VS2019-shared-debug | VS2019-static-release | Clang-shared-debug | Clang-static-release | Gcc-shared-debug |
 | :--- |:---:| :---:|:---:|:---:|:---:|
-| 5.12.6 | ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/knitschi/ConanQtPackageTest/VS2019-shared-debug) |  |  |  | ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/knitschi/ConanQtPackageTest/Qt5.12.6-Gcc-shared-debug) |
+| 5.12.6 | ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/knitschi/ConanQtPackageTest/Qt5.12.6-VS2019-shared-debug) |  |  |  | ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/knitschi/ConanQtPackageTest/Qt5.12.6-Gcc-shared-debug) |
 | 5.12.7 |  |  |  |  |  |
 | 5.12.8 |  |  |  |  |  |
 | 5.12.9 |  |  |  |  |  |
