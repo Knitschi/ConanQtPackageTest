@@ -1,4 +1,4 @@
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/knitschi/ConanQtPackageTest/package-tests)
+
 
 # ConanQtPackageTest
 This project is used for testing the Qt package that is provided by the conan package manager.
@@ -8,23 +8,23 @@ before building this you need to manually download and install Conan, CMake and 
 # Tests
 
 All test cases contain commands for getting the qt package. Building the test project and running the built
-executable. The conanfiles can be found under Sources/QtTestConsumer.
+executable. The conanfiles can be found under Sources/Conanfiles.
 
 # Working Qt package configurations
 
-| Conanfile | VS2019-shared-debug | VS2019-static-release | Clang-shared-debug | Clang-static-release | Gcc-shared-debug |
+| Qt Version | VS2019-shared-debug | VS2019-static-release | Clang-shared-debug | Clang-static-release | Gcc-shared-debug |
 | :--- |:---:| :---:|:---:|:---:|:---:|
-| conanfile_Qt5.12.6.txt | X | X | 4 |  | - |
-| conanfile_Qt5.12.7.txt | - | X |  |  | 1 |
-| conanfile_Qt5.12.8.txt | X | - |  |  |  |
-| conanfile_Qt5.12.9.txt | - | - |  |  |  |
-| conanfile_Qt5.13.0.txt | X | X | 0 |  |  |
-| conanfile_Qt5.13.1.txt | - | - |  |  |  |
-| conanfile_Qt5.13.2.txt | X | X | 2 |  |  |
-| conanfile_Qt5.14.0.txt | X | X |  |  |  |
-| conanfile_Qt5.14.1.txt | X | X | 2 |  | X |
-| conanfile_Qt5.15.0.txt | X | X | X | X | X |
-| conanfile_Qt5.15.1.txt | - | - | X |  | 5 |
+| 5.12.6 | ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/knitschi/ConanQtPackageTest/VS2019-shared-debug) |  |  |  | ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/knitschi/ConanQtPackageTest/Qt5.12.6-Gcc-shared-debug) |
+| 5.12.7 |  |  |  |  |  |
+| 5.12.8 |  |  |  |  |  |
+| 5.12.9 |  |  |  |  |  |
+| 5.13.0 |  |  |  |  |  |
+| 5.13.1 |  |  |  |  |  |
+| 5.13.2 |  |  |  |  |  |
+| 5.14.0 |  |  |  |  |  |
+| 5.14.1 |  |  |  |  |  |
+| 5.15.0 |  |  |  |  |  |
+| 5.15.1 |  |  |  |  |  |
 
 ### Legend
 **X**: Qt Package can be build.  

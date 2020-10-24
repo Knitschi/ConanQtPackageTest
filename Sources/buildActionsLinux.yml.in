@@ -1,0 +1,21 @@
+name: @configName@
+
+on: [push, pull_request]
+
+jobs:
+  linux:
+    runs-on:  ubuntu-20.04
+    strategy:
+      fail-fast: false
+    steps:
+      - name: Install system packages
+        run: sudo apt-get install python3-setuptools clang-format-10 clang-10 clang-tidy-10 ninja-build
+      - name: install conan
+        run: pip3 install conan --ignore-installed 
+      - uses: actions/checkout@v2
+      - name: run
+        env:
+          CONAN_SYSREQUIRES_MODE: enabled
+        run: |
+          ~/.local/bin/conan remote add bincrafters https://api.bintray.com/conan/bincrafters/public-conan 
+          ~/.local/bin/conan install -pr "Sources/ConanProfiles/@conanProfile@" -if "build" "Sources/Conanfiles/@conanFile@" --build=missing

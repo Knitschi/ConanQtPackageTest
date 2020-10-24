@@ -1,0 +1,17 @@
+name: Qt5.12.6-VS2019-shared-debug
+
+on: [push, pull_request]
+
+jobs:
+  Windows:
+    runs-on:  windows-latest
+    strategy:
+      fail-fast: false
+    steps:
+      - name: install
+        run: pip3 install conan
+      - uses: actions/checkout@v2
+      - name: run
+        run: |
+          conan remote add bincrafters https://api.bintray.com/conan/bincrafters/public-conan 
+          conan install -pr "Sources/ConanProfiles/ConanProfile-VS2019-shared-debug" -if "build" "Sources/Conanfiles/conanfile_Qt5.12.6.txt" --build=missing
