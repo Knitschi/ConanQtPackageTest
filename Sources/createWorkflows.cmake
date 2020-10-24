@@ -6,9 +6,9 @@
 cmake_minimum_required(VERSION 3.17)
 
 
-set(qtVersions 5.12.6 #[[ 5.12.9 5.13.2 5.14.2 5.15.1 ]])
-set(linuxConfigs Gcc-shared-debug #[[ Clang-shared-debug Clang-static-release ]])
-set(windowsConfigs VS2019-shared-debug #[[VS2019-static-release ]])
+set(qtVersions 5.12.6 5.12.9 5.13.2 5.14.2 5.15.1 )
+set(linuxConfigs Gcc-shared-debug Clang-shared-debug Clang-static-release)
+set(windowsConfigs VS2019-shared-debug VS2019-static-release)
 
 foreach(qtVersion ${qtVersions})
 
