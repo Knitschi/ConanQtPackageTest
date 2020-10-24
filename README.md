@@ -20,12 +20,6 @@ executable. The conanfiles can be found under Sources/Conanfiles.
 | 5.14.1 | ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/knitschi/ConanQtPackageTest/Qt5.14.2-VS2019-shared-debug) | ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/knitschi/ConanQtPackageTest/Qt5.14.2-VS2019-static-release) | ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/knitschi/ConanQtPackageTest/Qt5.14.2-Clang-shared-debug) | ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/knitschi/ConanQtPackageTest/Qt5.14.2-Clang-static-release) | ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/knitschi/ConanQtPackageTest/Qt5.14.2-Gcc-shared-debug) |
 | 5.15.1 | ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/knitschi/ConanQtPackageTest/Qt5.15.1-VS2019-shared-debug) | ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/knitschi/ConanQtPackageTest/Qt5.15.1-VS2019-static-release) | ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/knitschi/ConanQtPackageTest/Qt5.15.1-Clang-shared-debug) | ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/knitschi/ConanQtPackageTest/Qt5.15.1-Clang-static-release) | ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/knitschi/ConanQtPackageTest/Qt5.15.1-Gcc-shared-debug) |
 
-### Legend
-**X**: Qt Package can be build.  
-**-**: Qt Package can not be build. No error description is provided.  
-**number**: Qt Package can not be build. A short description of the error can be found in the *Encountered Build Errors*  section below.  
-
-
 # Conan Versions
 
   * Windows: 1.30.2
