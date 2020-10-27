@@ -1,13 +1,15 @@
 cmake_minimum_required(VERSION 3.16.0)
+
+set(CONAN_BUILD_INFO_DIR "${CMAKE_BINARY_DIR}" CACHE " ")
+
+message("---------------------- ${CONAN_BUILD_INFO_DIR}")
+
 project(ConanQtPackageTest)
 
-#SET(CMAKE_CXX_STANDARD 14)
-#SET(CMAKE_CXX_STANDARD_REQUIRED ON)
-
-include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
+include(${CONAN_BUILD_INFO_DIR}/conanbuildinfo.cmake)
 
 function( get_dll_location dllPathOut target)
-    string(TOUPPER "${COMPILER_CONFIG}" upperConfig)
+    string(TOUPPER "${CMAKE_BUILD_TYPE}" upperConfig)
     get_property(absDllPath TARGET ${target} PROPERTY IMPORTED_LOCATION_${upperConfig})
     if(NOT absDllPath)
         get_property(absDllPath TARGET ${target} PROPERTY LOCATION_${upperConfig})
