@@ -1,12 +1,8 @@
 cmake_minimum_required(VERSION 3.16.0)
 
-set(CONAN_BUILD_INFO_DIR "${CMAKE_BINARY_DIR}" CACHE " ")
-
-message("---------------------- ${CONAN_BUILD_INFO_DIR}")
-
 project(ConanQtPackageTest)
 
-include(${CONAN_BUILD_INFO_DIR}/conanbuildinfo.cmake)
+include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
 
 function( get_dll_location dllPathOut target)
     string(TOUPPER "${CMAKE_BUILD_TYPE}" upperConfig)
@@ -70,6 +66,18 @@ set( sourceFiles
 )
 
 # Add the test executable
-add_executable(test ${sourceFiles})
+add_executable(qtConsumer ${sourceFiles})
 #target_link_libraries(test CONAN_PKG::qt)
-target_link_libraries(test Qt5::Widgets)
+target_link_libraries(qtConsumer Qt5::Widgets)
+
+install( 
+    TARGETS qtConsumer
+    EXPORT ConanQtPackageTest
+    RUNTIME 
+        DESTINATION bin
+)
+
+enable_testing()
+
+add_test(NAME run_test_exe COMMAND qtConsumer)
+

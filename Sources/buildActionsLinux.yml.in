@@ -20,4 +20,6 @@ jobs:
           CONAN_SYSREQUIRES_MODE: enabled
         run: |
           ~/.local/bin/conan remote add bincrafters https://api.bintray.com/conan/bincrafters/public-conan 
-          ~/.local/bin/conan install -pr "Sources/ConanProfiles/@conanProfile@" -if "build" "Sources/Conanfiles/@conanFile@" --build=missing
+          ~/.local/bin/conan install Sources --profile "Sources/ConanProfiles/@conanProfile@" --install-folder build --build=missing --options qtVersion=@qtVersion@
+          ~/.local/bin/conan build Sources --build-folder build
+

@@ -1,3 +1,5 @@
+# This file was generated with the createWorkflows.cmake script.
+
 name: Qt5.12.9-VS2019-shared-debug
 
 on: [push, pull_request]
@@ -14,4 +16,5 @@ jobs:
       - name: run
         run: |
           conan remote add bincrafters https://api.bintray.com/conan/bincrafters/public-conan 
-          conan install -pr "Sources/ConanProfiles/ConanProfile-VS2019-shared-debug" -if "build" "Sources/Conanfiles/conanfile_Qt5.12.9.txt" --build=missing
+          conan install Sources --profile "Sources/ConanProfiles/ConanProfile-VS2019-shared-debug" --install-folder build --build=missing --options qtVersion=5.12.9
+          conan build Sources --build-folder build

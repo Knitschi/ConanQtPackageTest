@@ -1,3 +1,5 @@
+# This file was generated with the createWorkflows.cmake script.
+
 name: Qt5.13.2-Clang-shared-debug
 
 on: [push, pull_request]
@@ -18,4 +20,6 @@ jobs:
           CONAN_SYSREQUIRES_MODE: enabled
         run: |
           ~/.local/bin/conan remote add bincrafters https://api.bintray.com/conan/bincrafters/public-conan 
-          ~/.local/bin/conan install -pr "Sources/ConanProfiles/ConanProfile-Clang-shared-debug" -if "build" "Sources/Conanfiles/conanfile_Qt5.13.2.txt" --build=missing
+          ~/.local/bin/conan install Sources --profile "Sources/ConanProfiles/ConanProfile-Clang-shared-debug" --install-folder build --build=missing --options qtVersion=5.13.2
+          ~/.local/bin/conan build Sources --build-folder build
+

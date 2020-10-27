@@ -16,4 +16,5 @@ jobs:
       - name: run
         run: |
           conan remote add bincrafters https://api.bintray.com/conan/bincrafters/public-conan 
-          conan install -pr "Sources/ConanProfiles/@conanProfile@" -if "build" "Sources/Conanfiles/@conanFile@" --build=missing
+          conan install Sources --profile "Sources/ConanProfiles/@conanProfile@" --install-folder build --build=missing --options qtVersion=@qtVersion@
+          conan build Sources --build-folder build
