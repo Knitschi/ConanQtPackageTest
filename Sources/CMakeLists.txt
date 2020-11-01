@@ -43,21 +43,11 @@ endif()
 
 set( sourceFiles
     test.cpp
+    conanfile.py
+    createWorkflows.cmake
     CMakeToolchainFiles/Clang.cmake
     CMakeToolchainFiles/Gcc.cmake
     CMakeToolchainFiles/MSVC2019.cmake
-    Conanfiles/conanfile_Qt5.12.6.txt
-    Conanfiles/conanfile_Qt5.12.7.txt
-    Conanfiles/conanfile_Qt5.12.8.txt
-    Conanfiles/conanfile_Qt5.12.9.txt
-    Conanfiles/conanfile_Qt5.13.0.txt
-    Conanfiles/conanfile_Qt5.13.1.txt
-    Conanfiles/conanfile_Qt5.13.2.txt
-    Conanfiles/conanfile_Qt5.14.0.txt
-    Conanfiles/conanfile_Qt5.14.1.txt
-    Conanfiles/conanfile_Qt5.14.2.txt
-    Conanfiles/conanfile_Qt5.15.0.txt
-    Conanfiles/conanfile_Qt5.15.1.txt
     ConanProfiles/ConanProfile-Clang-shared-debug
     ConanProfiles/ConanProfile-Clang-static-release
     ConanProfiles/ConanProfile-Gcc-shared-debug
