@@ -5,13 +5,25 @@
 
 int main(int argc, char** argv)
 {
-    QApplication app(argc, argv);
-    QMainWindow window;
-    window.show();
+    try
+    {
+        QApplication app(argc, argv);
+        QMainWindow window;
+        window.show();
 
-    app.processEvents();
+        app.processEvents();
 
-    std::cout << "The Qt TestConsumer worked!\n";
+        std::cout << "The Qt TestConsumer worked!\n";
+        return 0;
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+    catch(...)
+    {
+        std::cerr << "Unknown exception!") << '\n';
+    }
 
-    return 0;
+    return 1;
 }
